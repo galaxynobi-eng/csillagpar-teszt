@@ -208,7 +208,7 @@ a.innerHTML='<div class="card closed"><div class="motif" data-ring aria-hidden="
   <section class="card mark" aria-live="polite">
     <div class="wm spin" data-ring aria-hidden="true"></div>
     <h2>Számmisztika <span class="badge">Prémium</span></h2>
-    <p class="tag" style="margin:0">Cheiro káldeus rendszere szerint. A tesztváltozatban előnézetként nyitva van.</p>
+    <p class="tag" style="margin:0">Cheiro káldeus rendszere szerint. A teszt alatt ingyenes és nyitott.</p>
     <div class="nums">
       <div class="num-box"><label id="kl1">Te</label><b id="k1">–</b><div class="t" id="k1t"></div><div class="k" id="k1k"></div><div class="calcline" id="k1c"></div><div class="namenum">Névszám: <span id="nn1">–</span><div class="k" id="nn1t"></div><div class="calcline" id="nn1h"></div></div></div>
       <div class="num-box"><label id="kl2">Ő</label><b id="k2">–</b><div class="t" id="k2t"></div><div class="k" id="k2k"></div><div class="calcline" id="k2c"></div><div class="namenum">Névszám: <span id="nn2">–</span><div class="k" id="nn2t"></div><div class="calcline" id="nn2h"></div></div></div>
@@ -221,18 +221,18 @@ a.innerHTML='<div class="card closed"><div class="motif" data-ring aria-hidden="
 
   <section class="card mark">
     <div class="wm l spin" data-ring aria-hidden="true"></div>
-    <h2>Prémium elemzés</h2>
+    <h2>Prémium elemzés <span class="badge">A teszt alatt ingyenes</span></h2>
     <p class="tag" style="margin:0">Részletes kép a kapcsolatotokról.</p>
-    <ul class="lock-list">
-      <li><span data-pt="pt1">Szerelem és szenvedély</span><span>Zárolva</span></li>
-      <li><span data-pt="pt2">Kommunikáció és viták</span><span>Zárolva</span></li>
-      <li><span data-pt="pt3">Hosszú távú kilátások</span><span>Zárolva</span></li>
-      <li><span data-pt="pt4">Napi párhoroszkóp</span><span>Zárolva</span></li>
+    <ul class="lock-list" hidden>
+      <li><span data-pt="pt1">Szerelem és szenvedély</span><span>Nyitva</span></li>
+      <li><span data-pt="pt2">Kommunikáció és viták</span><span>Nyitva</span></li>
+      <li><span data-pt="pt3">Hosszú távú kilátások</span><span>Nyitva</span></li>
+      <li><span data-pt="pt4">Napi párhoroszkóp</span><span>Nyitva</span></li>
     </ul>
-    <button class="btn" type="button" id="trial">7 napos ingyenes próba</button>
-    <div class="price">A teljes csillagtérképetek egyszer 990 Ft · vagy 790 Ft / hó, és a csillagok minden nap üzennek a kapcsolataidról. Bármikor lemondható.</div>
-    <div class="note" id="trialNote" hidden>Bemutató változat: a gomb most fizetés nélkül nyitja meg a prémium tartalmat. A kész appban itt indul a próbaidőszak az App Store vagy a Google Play fizetésével.</div>
-    <div class="prem" id="premium" hidden>
+    
+    <div class="price">Később, az éles appban a teljes csillagtérkép egyszer 990 Ft vagy havi 790 Ft lenne. A kérdőív végén elmondhatod, melyik érné meg neked.</div>
+    <div class="note" id="trialNote">A tesztidőszak alatt minden ingyenes és nyitott, nem kell fizetned semmit. Olvasd el nyugodtan, és a végén mondd el, mennyire talált.</div>
+    <div class="prem" id="premium">
       <div><h3 data-pt="pt1">Szerelem és szenvedély</h3><p id="pLove"></p></div>
       <div><h3 data-pt="pt2">Kommunikáció és viták</h3><p id="pTalk"></p></div>
       <div><h3 data-pt="pt3">Hosszú távú kilátások</h3><p id="pLong"></p></div>
@@ -465,7 +465,7 @@ function renderPremium(){
 $("form").addEventListener("submit",e=>{e.preventDefault();run()});
 $("rel").addEventListener("change",()=>{relUI();run()});
 relUI();
-$("trial").addEventListener("click",e=>{$("trialNote").hidden=false;$("premium").hidden=false;document.querySelectorAll(".lock-list li").forEach(li=>{li.classList.add("open");li.lastElementChild.textContent="Nyitva"});e.currentTarget.textContent="Próbaidő aktív";renderPremium()});
+
 const FB={};
 const FBL={osszhang:"Összhang igaz?",kotesek:"Kapcsolati kötések",szamok:"Számmisztika",premium:"Prémium elemzés",kivel:"Kapcsolat",osszkep:"Összkép",fizetne:"Fizetne",randi:"Ismerkedés érdekli"};
 document.addEventListener("click",e=>{const b=e.target.closest(".rb button");if(!b)return;const r=b.closest(".rate");r.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));FB[r.dataset.q]=b.dataset.v});
