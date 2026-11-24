@@ -1,5 +1,5 @@
 // Csillagkör – offline gyorsítótár. Új kiadásnál a VER számot növelni kell.
-const VER="csillagkor-v1";
+const VER="csillagkor-v2";
 const CORE=["./","./index.html","./manifest.webmanifest","./icon-192.png","./icon-512.png",
   "https://cdn.jsdelivr.net/npm/astronomy-engine@2.1.19/astronomy.browser.min.js"];
 self.addEventListener("install",e=>{e.waitUntil(caches.open(VER).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()))});

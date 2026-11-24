@@ -263,8 +263,6 @@ body{padding-top:max(20px,env(safe-area-inset-top,0px))}
       <h2>A teljes csillagtérkép <span class="badge">Hamarosan</span></h2>
       <p class="tag" style="margin:0">Ezen dolgozunk most. Ez lenne benne:</p>
       <ul class="lock-list" id="lockList"></ul>
-      <div class="rate" data-q="ar"><span class="rq">Érdekelne? Mennyit adnál érte egyszeri áron?</span><div class="rb"><button type="button" data-v="Ingyen kérném" aria-pressed="false">Ingyen kérném</button><button type="button" data-v="290 Ft" aria-pressed="false">290 Ft</button><button type="button" data-v="490 Ft" aria-pressed="false">490 Ft</button><button type="button" data-v="990 Ft" aria-pressed="false">990 Ft</button><button type="button" data-v="Nem érdekel" aria-pressed="false">Nem érdekel</button></div></div>
-      <p class="fbmsg" id="arMsg" hidden>Köszönjük! Ezzel sokat segítesz eldönteni, mit építsünk meg.</p>
       <form id="sub" novalidate hidden>
         <label for="email" class="sublabel">Szóljunk, amikor elkészült?</label>
         <input type="email" id="email" autocomplete="email" inputmode="email" placeholder="email@cimed.hu">
@@ -643,8 +641,7 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")$("ov").hidden=true}
 document.addEventListener("click",e=>{
   const b=e.target.closest(".rb button");
   if(b){const r=b.closest(".rate");r.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));
-    if(r.dataset.q==="ar"){ev("ar",{valasz:b.dataset.v});$("arMsg").hidden=false;if(CONTROLLER&&b.dataset.v!=="Nem érdekel")$("sub").hidden=false}
-    else ev("talalt",{valasz:b.dataset.v,osszhang:LAST&&LAST.score});
+    ev("talalt",{valasz:b.dataset.v,osszhang:LAST&&LAST.score});
     return}
   const g=e.target.closest("[data-go]");
   if(g){ev("premium_kattintas",{honnan:g.closest("section").id});$("premium").scrollIntoView({behavior:"smooth",block:"start"})}
@@ -658,7 +655,7 @@ $("sub").addEventListener("submit",async e=>{
   m.textContent=ok?"Köszönjük! Szólunk, amint elkészült.":"Most nem sikerült elküldeni. Próbáld újra később.";
   if(!ok)$("subBtn").disabled=false;
 });
-if(CONTROLLER){$("legalMail").hidden=false;$("ctl").hidden=false;$("ctl").textContent="Adatkezelő: "+CONTROLLER}
+if(CONTROLLER){$("sub").hidden=false;$("legalMail").hidden=false;$("ctl").hidden=false;$("ctl").textContent="Adatkezelő: "+CONTROLLER}
 $("d1").max=$("d2").max=today();
 
 /* ---------- Indulás: ha már járt itt, rögtön mutatjuk a mai üzenetet ---------- */
