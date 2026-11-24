@@ -1,3 +1,7 @@
-# Csillagpár – tesztváltozat
+# Csillagkör
 
-Csillagkör – ideiglenes tesztoldal, 2026. november 17-ig érhető el.
+Mit súgnak a csillagok a kapcsolataidról? Nyilvános, egyszerűsített változat (telepíthető webapp).
+
+Élő oldal: https://galaxynobi-eng.github.io/csillagpar-teszt/
+
+A korábbi baráti tesztváltozat a git-történetben megtalálható.
